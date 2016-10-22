@@ -37,10 +37,13 @@ export class ConnectorService implements IConnectorService {
                         if(!exportData) {
                             return data[0];
                         } 
-                        console.log('Exported', data);
-                        data[0].fullText = data[1];
-                        delete(data[1]);
-                        return data;
+
+                        let withFullText = merge(
+                            data[0],
+                            {fullText: data[1] }
+                        );
+
+                        return withFullText;
                     });
         });
     }
