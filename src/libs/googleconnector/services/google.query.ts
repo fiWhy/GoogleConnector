@@ -12,10 +12,10 @@ export class GoogleQuery implements IGoogleQuery {
             }
 
             if (Array.isArray(query.ext)) { 
-               beforeString = `mimeType contains "${query.ext.join('" or mimeType contains "')}"`;
+               beforeString += `mimeType contains "${query.ext.join('" or mimeType contains "')}"`;
             }
             else
-               beforeString = `mimeType contains '${query.ext}'`;
+               beforeString += `mimeType contains '${query.ext}'`;
         }
 
         return beforeString;
@@ -23,7 +23,7 @@ export class GoogleQuery implements IGoogleQuery {
     }
 
     private prepareFolderQuery(query): string {
-        return (query.folder?`"${query.folder}" in parents"`:'');
+        return (query.folder?`"${query.folder}" in parents`:'');
     }
 
     public getList(query): IQuery {

@@ -4,7 +4,8 @@
   "description": "Google drive connector",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm i && tsd install",
+    "webpack": "node ./tools/webpack"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,9 @@
     "googleapis": "^14.1.0"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "ts-loader": "^0.9.5",
+    "webpack": "^1.13.2",
+    "webpack-merge": "^0.15.0"
   }
 }

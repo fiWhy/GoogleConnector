@@ -32,7 +32,7 @@ export class GoogleApiService implements IGoogleApiService {
             options
         );
         request.q =  this.googleQueryService.getList(query).q;
-        console.log(request);
+        
         return new Promise((res, rej) => {
             this.service.files.list(request, function (err, response) {
                 if (err) {
@@ -71,7 +71,6 @@ export class GoogleApiService implements IGoogleApiService {
             options,
             query)
             
-            console.log(request);
         return new Promise((res, rej) => {
             this.service.files.export(request, function (err, response) {
                 if (err) {

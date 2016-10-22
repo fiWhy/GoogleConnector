@@ -31,6 +31,8 @@ Routes:
                 pageToken? - token of a page you want to go
                 folder? - id of drive you want to get files from
 
+                You can combile folder with extensions)) So go on! =)
+
                 ... other queries, that permitted by googleapi v3
             };
 
@@ -41,3 +43,6 @@ Routes:
             }
 
             You could set export and fileId either in body parameters or query. But your query parameters will overwrite all duplicate values...
+
+
+I'm really sorry, that had no time to write tests =(
