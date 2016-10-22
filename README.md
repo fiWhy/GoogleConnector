@@ -47,8 +47,8 @@ Your link will looks like http://localhost:3000?token={YOUR_TOKEN}
             };
             
             
-          You can combile folder with extensions)) So go on! =)
-                ... other queries, that permitted by googleapi v3
+You can combile folder with extensions)) So go on! =)
+... other queries, that permitted by googleapi v3
 
 /file - POST - in the body you need to set the fileId, or id, or you can put all the information about file
             
@@ -59,7 +59,7 @@ Your link will looks like http://localhost:3000?token={YOUR_TOKEN}
 
             
             
-            You could set export and fileId either in body parameters or query. But your query parameters will overwrite all duplicate values...
+ You could set export and fileId either in body parameters or query. But your query parameters will overwrite all duplicate values...
 
 
 I'm really sorry, that had no time to write tests =(
