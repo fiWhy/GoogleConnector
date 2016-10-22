@@ -37,7 +37,6 @@ Your link will looks like http://localhost:3000?token={YOUR_TOKEN}
 
 / - GET - Getting the list of file from all over the google drive
             Query parameters:
-            ```javascript
             {
                 ext[[]?] - array or string of extensions, you want to see in your list,
                 pageToken? - token of a page you want to go
