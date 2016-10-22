@@ -36,6 +36,8 @@ Your link will looks like http://localhost:3000?token={YOUR_TOKEN}
 ###Acceptable routes:
 
 / - GET - Getting the list of file from all over the google drive
+
+
             Query parameters:
             {
                 ext[[]?] - array or string of extensions, you want to see in your list,
