@@ -1,7 +1,6 @@
 import * as readline from 'readline';
 import * as fs from 'fs';
 import { ICredentials } from '../entities/credentials';
-import ApplicationTypes from '../constants/application.types';
 
 const GoogleAuth = require('google-auth-library');
 
@@ -14,8 +13,6 @@ export class GoogleAuthService implements IGoogleAuthService {
     private tokenDir: string;
     private tokenFileName: string;
     private token: string;
-    private applicationType: ApplicationTypes = ApplicationTypes.Console;
-
 
     setToken(token: string) {
         this.token = token;
@@ -29,18 +26,6 @@ export class GoogleAuthService implements IGoogleAuthService {
                 res(this.proceedWebToken(oauth2Client, this.token)) :
                 rej('Token was not provided');
         })
-    }
-
-    private checkIsTokenExpiredAndRefresh(data: any): Thenable<any> {
-        return new Promise((res, rej) => {
-            const nowDate = new Date();
-            const jsonData = JSON.parse(data);
-            if (jsonData.expiry_date && (jsonData.expiry_date < nowDate.getTime())) {
-                rej('Token expired');
-            } else {
-                res(data);
-            }
-        });
     }
 
     private proceedWebToken(client, token) {

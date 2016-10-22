@@ -1,9 +1,6 @@
 import {IGoogleAuthService, GoogleAuthService} from './google.auth';
 import {IGoogleApiService, GoogleApiService} from './google.api';
 import {ICredentials, Credentials} from '../entities/credentials';
-import ApplicationTypes from '../constants/application.types';
-import Scopes from '../constants/scopes';
-import {scopeList} from '../payload/scopes';
 
 export interface IGoogleClientService {
     authorize(credentials: ICredentials): Thenable<string>;

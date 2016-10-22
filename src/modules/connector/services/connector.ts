@@ -1,7 +1,5 @@
 import { GoogleClientService, IGoogleClientService } from '../../../libs/googleconnector/services/google.client';
 import { GoogleQuery, IGoogleQuery } from '../../../libs/googleconnector/services/google.query';
-import ApplicationTypes from '../../../libs/googleconnector/constants/application.types';
-import Scopes from '../../../libs/googleconnector/constants/scopes';
 import { config } from '../../../config/main';
 const merge = require('xtend');
 

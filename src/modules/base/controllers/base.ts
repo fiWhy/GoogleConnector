@@ -4,10 +4,16 @@ export interface IBaseController {
 
 export class BaseController implements IBaseController {
     sendError(res, status, error): void {
-        res.status(status);
-        res.json({
-            status,
-            error
-        })
+        if(!error.code) {
+            res.status(status);
+            res.json({
+                code: status,
+                error
+            })
+        } else {
+            res.status(error.code); 
+            res.json(error);
+        }
+        
     }
 }
