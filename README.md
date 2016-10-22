@@ -36,15 +36,17 @@ Your link will looks like http://localhost:3000?token={YOUR_TOKEN}
 ###Acceptable routes:
 
 / - GET - Getting the list of file from all over the google drive
-            Query parameters: {
+            Query parameters:
+            ```javascript
+            {
                 ext[[]?] - array or string of extensions, you want to see in your list,
                 pageToken? - token of a page you want to go
                 folder? - id of drive you want to get files from
-
-                You can combile folder with extensions)) So go on! =)
-
-                ... other queries, that permitted by googleapi v3
+                
             };
+            ```
+            You can combile folder with extensions)) So go on! =)
+                ... other queries, that permitted by googleapi v3
 
 /file - POST - in the body you need to set the fileId, or id, or you can put all the information about file
             
