@@ -1,8 +1,9 @@
 import { GoogleClientService, IGoogleClientService } from '../../../libs/googleconnector/services/google.client';
+import { GoogleQuery, IGoogleQuery } from '../../../libs/googleconnector/services/google.query';
 import ApplicationTypes from '../../../libs/googleconnector/constants/application.types';
 import Scopes from '../../../libs/googleconnector/constants/scopes';
 import { config } from '../../../config/main';
-const merge = require('deepmerge');
+const merge = require('xtend');
 
 export interface IConnectorService {
     getListOfFiles(req);
@@ -16,10 +17,32 @@ export class ConnectorService implements IConnectorService {
         this.connector = new GoogleClientService;
     }
 
+
     getFile(req) {
+        const options = {
+            fields: 'id, name, kind, mimeType, properties, modifiedTime',
+            spaces: 'drive',
+            mimeType: 'text/plain'
+        };
+        const exportData = req.query.export;
         return this.googleAuth(req.query.token).then(r => {
-            return this.connector.api.getFile(req.body);
-        })
+            const promises = [this.connector.api.getFile(req.body, req.query, options)];
+
+            if(exportData) {
+                promises.push(this.connector.api.exportFile(req.body, req.query, options));
+            }
+            
+            return Promise.all(promises)
+                    .then((data) => {
+                        if(!exportData) {
+                            return data[0];
+                        } 
+                        console.log('Exported', data);
+                        data[0].fullText = data[1];
+                        delete(data[1]);
+                        return data;
+                    });
+        });
     }
 
     getListOfFiles(req) {
@@ -27,19 +50,20 @@ export class ConnectorService implements IConnectorService {
             fields: 'nextPageToken, files(id, name, kind, mimeType)',
             spaces: 'drive'
         };
-        const query = req.query;
-        const request = merge(options, query);
+
         return this.googleAuth(req.query.token).then(r => {
-            return this.connector.api.getFilesList(request);
+            return this.connector.api.getFilesList(req.query, options);
         })
     }
 
     searchFiles(req) {
         const options = req.body;
         return this.googleAuth(req.query.token).then(r => {
-            return this.connector.api.getFilesList(options);
+            return this.connector.api.getFilesList(req.query, options);
         })
     }
+
+    
 
 
     private googleAuth(token) {
