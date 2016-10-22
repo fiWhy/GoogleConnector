@@ -14,6 +14,7 @@
 npm run start
 npm run compile
 ```
+
  in your console from the base directory of application
 * 9. Then type 
 ```sh
