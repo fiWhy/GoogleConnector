@@ -45,7 +45,9 @@ Your link will looks like http://localhost:3000?token={YOUR_TOKEN}
                 folder? - id of drive you want to get files from
                 
             };
-            You can combile folder with extensions)) So go on! =)
+            
+            
+          You can combile folder with extensions)) So go on! =)
                 ... other queries, that permitted by googleapi v3
 
 /file - POST - in the body you need to set the fileId, or id, or you can put all the information about file
@@ -55,6 +57,8 @@ Your link will looks like http://localhost:3000?token={YOUR_TOKEN}
                 mimeType - by default - text/plain
             }
 
+            
+            
             You could set export and fileId either in body parameters or query. But your query parameters will overwrite all duplicate values...
 
 
