@@ -1,8 +1,10 @@
 import {ConnectorService, IConnectorService} from '../services/connector';
+import {BaseController} from '../../base/controllers/base';
 
-class Connector {
+class Connector extends BaseController {
     private connectorService: IConnectorService;
     constructor() {
+        super();
         this.connectorService = new ConnectorService;
     }
 
@@ -11,7 +13,7 @@ class Connector {
             .then(r => {
                 res.json(r);
             }).catch(e => {
-                res.send(e);
+                this.sendError(res, 400, e);
             });
     }
 
@@ -20,7 +22,7 @@ class Connector {
             .then(r => {
                 res.json(r);
             }).catch(e => {
-                res.send(e);
+                this.sendError(res, 400, e);
             });
     }
 
@@ -29,7 +31,7 @@ class Connector {
             .then(r => {
                 res.json(r);
             }).catch(e => {
-                res.send(e);
+                this.sendError(res, 400, e);
             });
     }
 }
