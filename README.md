@@ -11,6 +11,7 @@
 * 7. Now rename the main.ts.default file to main.ts and put your credentials as shown in the file.
 * 8. If you have your own compiler - you can use it to compile ts files to js files, if not - just type 
 ```sh
+npm run start
 npm run compile
 ```
  in your console from the base directory of application
