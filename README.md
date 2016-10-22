@@ -43,7 +43,6 @@ Your link will looks like http://localhost:3000?token={YOUR_TOKEN}
                 folder? - id of drive you want to get files from
                 
             };
-            ```
             You can combile folder with extensions)) So go on! =)
                 ... other queries, that permitted by googleapi v3
 
