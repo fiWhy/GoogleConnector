@@ -40,6 +40,7 @@ Routes:
             
             Query parameters: {
                 export = {any value} - if you want to get a content of chosen file
+                mimeType - by default - text/plain
             }
 
             You could set export and fileId either in body parameters or query. But your query parameters will overwrite all duplicate values...

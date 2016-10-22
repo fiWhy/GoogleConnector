@@ -13,5 +13,5 @@ app.use(bodyParser.urlencoded({
 routes(app);
 
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+  console.log('Google connector app listening 3000!');
 });
