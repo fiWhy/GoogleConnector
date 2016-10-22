@@ -11,8 +11,6 @@ class Connector {
     }
 
     index = (req, res): void => {
-        // res.send(req.body);
-        console.log('Set');
         this.connectorService.getListOfFiles(req)
             .then(r => {
                 console.log('have a response', r);

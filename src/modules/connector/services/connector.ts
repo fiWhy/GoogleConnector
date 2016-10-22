@@ -14,10 +14,6 @@ export class ConnectorService implements IConnectorService {
     private connector: IGoogleClientService;
     constructor() {
         this.connector = new GoogleClientService;
-        this.connector.setApplicationType(ApplicationTypes.Web);
-        this.connector.pushScopes([
-            Scopes.DRIVE_READONLY
-        ]);
     }
 
     getFile(req) {
@@ -31,13 +27,11 @@ export class ConnectorService implements IConnectorService {
             fields: 'nextPageToken, files(id, name, kind, mimeType)',
             spaces: 'drive'
         };
-
         const query = req.query;
         const request = merge(options, query);
         return this.googleAuth(req.query.token).then(r => {
             return this.connector.api.getFilesList(request);
         })
-
     }
 
     searchFiles(req) {
@@ -46,6 +40,7 @@ export class ConnectorService implements IConnectorService {
             return this.connector.api.getFilesList(options);
         })
     }
+
 
     private googleAuth(token) {
         this.connector.setToken(token);
