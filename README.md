@@ -35,7 +35,7 @@ Your link will looks like http://localhost:3000?token={YOUR_TOKEN}
 
 ###Acceptable routes:
 
-/ - GET - Getting the list of file from all over the google drive
+**/** - GET - Getting the list of file from all over the google drive
 
 
             Query parameters:
@@ -50,7 +50,7 @@ Your link will looks like http://localhost:3000?token={YOUR_TOKEN}
 You can combile folder with extensions)) So go on! =)
 ... other queries, that permitted by googleapi v3
 
-/file - POST - in the body you need to set the fileId, or id, or you can put all the information about file
+**/file** - POST - in the body you need to set the fileId, or id, or you can put all the information about file
             
             Query parameters: {
                 export = {any value} - if you want to get a content of chosen file
