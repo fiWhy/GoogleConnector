@@ -23,7 +23,8 @@ export class ConnectorService implements IConnectorService {
         };
         const exportData = req.query.export;
         return this.googleAuth(req.query.token).then(r => {
-           return this.proceedFileDeed(exportData, req, options);
+           const promises = this.prepareFileRequestPromises(exportData, req, options);
+           return this.executeFileRequest(promises, exportData);
         });
     }
 
@@ -39,14 +40,20 @@ export class ConnectorService implements IConnectorService {
     }
     
 
-    private proceedFileDeed(exportData, req, options) {
+    private prepareFileRequestPromises(exportData, req, options) {
          const promises = [this.connector.api.getFile(req.body, req.query, options)];
 
             if(exportData) {
                 promises.push(this.connector.api.exportFile(req.body, req.query, options));
             }
+
+            return promises;
             
-            return Promise.all(promises)
+            
+    }
+
+    private executeFileRequest(promises, exportData) {
+        return Promise.all(promises)
                     .then((data) => {
                         if(!exportData) {
                             return data[0];
