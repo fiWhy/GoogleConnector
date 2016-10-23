@@ -2,8 +2,7 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es5",
-        "outDir": "dist",
-        "watch": true
+        "outDir": "dist"
     },
     "compileOnSave": true,
     "exclude": [
