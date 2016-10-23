@@ -5,7 +5,6 @@ const merge = require('xtend');
 
 export interface IConnectorService {
     getListOfFiles(req);
-    searchFiles(req);
     getFile(req);
 }
 
@@ -52,13 +51,6 @@ export class ConnectorService implements IConnectorService {
             spaces: 'drive'
         };
 
-        return this.googleAuth(req.query.token).then(r => {
-            return this.connector.api.getFilesList(req.query, options);
-        })
-    }
-
-    searchFiles(req) {
-        const options = req.body;
         return this.googleAuth(req.query.token).then(r => {
             return this.connector.api.getFilesList(req.query, options);
         })
