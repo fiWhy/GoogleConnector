@@ -14,7 +14,8 @@
     "deepmerge": "^1.2.0",
     "express": "^4.14.0",
     "google-auth-library": "^0.9.9",
-    "googleapis": "^14.1.0"
+    "googleapis": "^14.1.0",
+    "xtend": "^4.0.1"
   },
   "devDependencies": {
     "nodemon": "^1.11.0",
