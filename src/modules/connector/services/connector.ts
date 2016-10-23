@@ -23,7 +23,24 @@ export class ConnectorService implements IConnectorService {
         };
         const exportData = req.query.export;
         return this.googleAuth(req.query.token).then(r => {
-            const promises = [this.connector.api.getFile(req.body, req.query, options)];
+           return this.proceedFileDeed(exportData, req, options);
+        });
+    }
+
+    getListOfFiles(req) {
+        const options = {
+            fields: 'nextPageToken, files(id, name, kind, mimeType)',
+            spaces: 'drive'
+        };
+
+        return this.googleAuth(req.query.token).then(r => {
+            return this.connector.api.getFilesList(req.query, options);
+        })
+    }
+    
+
+    private proceedFileDeed(exportData, req, options) {
+         const promises = [this.connector.api.getFile(req.body, req.query, options)];
 
             if(exportData) {
                 promises.push(this.connector.api.exportFile(req.body, req.query, options));
@@ -42,20 +59,7 @@ export class ConnectorService implements IConnectorService {
 
                         return withFullText;
                     });
-        });
     }
-
-    getListOfFiles(req) {
-        const options = {
-            fields: 'nextPageToken, files(id, name, kind, mimeType)',
-            spaces: 'drive'
-        };
-
-        return this.googleAuth(req.query.token).then(r => {
-            return this.connector.api.getFilesList(req.query, options);
-        })
-    }
-
     
 
 
