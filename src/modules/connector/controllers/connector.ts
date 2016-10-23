@@ -17,15 +17,6 @@ class Connector extends BaseController {
             });
     }
 
-    search = (req, res): void => {
-         this.connectorService.searchFiles(req)
-            .then(r => {
-                res.json(r);
-            }).catch(e => {
-                this.sendError(res, 400, e);
-            });
-    }
-
     file = (req, res): void => {
          this.connectorService.getFile(req)
             .then(r => {
