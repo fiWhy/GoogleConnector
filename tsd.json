@@ -22,6 +22,9 @@
     },
     "express-serve-static-core/express-serve-static-core.d.ts": {
       "commit": "3cc599268d2dabe3c3ee194e92965ee87440e9c3"
+    },
+    "body-parser/body-parser.d.ts": {
+      "commit": "3cc599268d2dabe3c3ee194e92965ee87440e9c3"
     }
   }
 }

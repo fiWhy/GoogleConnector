@@ -1,5 +1,5 @@
+/// <reference path='../typings/tsd.d.ts' />
 import { bootstrap } from './config/bootstrap';
-import { routes } from './config/routes';
 
 const bodyParser = require('body-parser')
 
@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-routes(app);
+bootstrap(app);
 
 app.listen(3000, function () {
   console.log('Google connector app listening 3000!');

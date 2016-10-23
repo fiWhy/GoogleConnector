@@ -39,7 +39,6 @@ export class ConnectorService implements IConnectorService {
         })
     }
     
-
     private prepareFileRequestPromises(exportData, req, options) {
          const promises = [this.connector.api.getFile(req.body, req.query, options)];
 
@@ -48,8 +47,6 @@ export class ConnectorService implements IConnectorService {
             }
 
             return promises;
-            
-            
     }
 
     private executeFileRequest(promises, exportData) {
